@@ -5,6 +5,7 @@ import 'package:flutter_bounceable/flutter_bounceable.dart';
 import 'package:provider/provider.dart';
 import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
 import '../model/model.dart';
+import '../controller/controller.dart';
 
 
 class ShowStats extends StatefulWidget {
@@ -68,7 +69,7 @@ class RequestAndShow extends State<ShowStats> {
                         showChildOpacityTransition: false,
                         onRefresh: () async {
                           setState(() {
-                            //todo effective stuff
+                            Controller().flushActivity(context);
                           });
                         },
                         child: Column(
@@ -112,10 +113,7 @@ class RequestAndShow extends State<ShowStats> {
                                     }
                                     return Bounceable(
                                       onTap: () {
-                                        Navigator.of(context).push(
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                const StartingScreen()));//ExerciseDetails(data: savedActivities.elementAt(i),color: main,second: second)));
+                                        print("shut up");//ExerciseDetails(data: savedActivities.elementAt(i),color: main,second: second)));
                                       },
                                       child: Container(
                                         height: 80,
@@ -202,7 +200,11 @@ class RequestAndShow extends State<ShowStats> {
                                   decoration: InputDecoration(
                                     hintText: 'Insert into database',
                                     suffixIcon: IconButton(
-                                      onPressed: () => print("no stuff yet"),
+                                      onPressed: () => {
+                                        Controller().notifyNewActivity(context),
+
+                                        Controller().addActivity(context,{"name":"new","expiredate":"log"}),
+                                      },
                                       icon: const Icon(Icons.clear),
                                     ),
                                   ),

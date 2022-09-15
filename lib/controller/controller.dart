@@ -94,6 +94,26 @@ class Controller {
   }*/
 
 
+  void notifyNewActivity(BuildContext context) {
+
+
+    Provider.of<AppState>(context,listen: false).notifyNewActivity();
+
+  }
+
+  void addActivity(BuildContext context,Map<dynamic,dynamic> newAc) {
+
+
+    Provider.of<AppState>(context,listen: false).addActivity(newAc);
+
+  }
+
+  void flushActivity(BuildContext context) {
+
+
+    Provider.of<AppState>(context,listen: false).refresh();
+
+  }
 
 
   void toViewMenu(BuildContext context) {

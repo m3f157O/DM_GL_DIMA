@@ -27,6 +27,7 @@ class ShowHeartbeat extends StatefulWidget {
 
 
 
+  //todo remove bad practice
   @override
   RequestAndShow createState() => RequestAndShow(data: data,color: color,title: title);
 }

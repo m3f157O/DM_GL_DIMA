@@ -33,7 +33,7 @@ class AppState extends ChangeNotifier {
   bool asc=false;
   PHASE _state=PHASE.startingScreen;
 
-  List<Map<dynamic,dynamic>> savedActivities=[];
+  List<Map<dynamic,dynamic>> savedActivities=[{"name":"duug","expiredate":"rat bastard"},{"name":"duug","expiredate":"rat bastard"},{"name":"duug","expiredate":"rat bastard"},{"name":"duug","expiredate":"rat bastard"},{"name":"duug","expiredate":"rat bastard"},];
   bool newActivities=false;
 
 
@@ -43,6 +43,24 @@ class AppState extends ChangeNotifier {
 
   void setstate(PHASE i) {
     _state = i;
+    notifyListeners();
+  }
+
+
+  void notifyNewActivity() {
+    newActivities=true;
+    notifyListeners();
+
+  }
+
+  void addActivity(Map<dynamic,dynamic> newAc) {
+
+    savedActivities.add(newAc);
+
+  }
+
+  void refresh() {
+    newActivities=false;
     notifyListeners();
   }
 
