@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../model/model.dart';
@@ -94,12 +95,7 @@ class Controller {
   }*/
 
 
-  void notifyNewActivity(BuildContext context) {
 
-
-    Provider.of<AppState>(context,listen: false).notifyNewActivity();
-
-  }
 
   void addActivity(BuildContext context,Map<dynamic,dynamic> newAc) {
 
@@ -121,6 +117,23 @@ class Controller {
 
 
     Provider.of<AppState>(context,listen: false).setstate(PHASE.clientMenu);
+
+  }
+
+  void changeColor(BuildContext context, Color color) {
+
+
+
+    Provider.of<AppState>(context,listen: false).setColor(color);
+
+  }
+
+
+  void changeSecondColor(BuildContext context, Color color) {
+
+
+
+    Provider.of<AppState>(context,listen: false).setSecond(color);
 
   }
 

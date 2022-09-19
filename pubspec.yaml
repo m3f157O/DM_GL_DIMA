@@ -34,6 +34,9 @@ dependencies:
   syncfusion_flutter_charts: ^20.2.48
   flutter_toggle_tab: ^1.2.0
   provider: ^6.0.3
+  flutter_svg: ^1.1.5
+  flushbar: ^1.10.4
+  simple_animations: ^5.0.0+2
   flutter:
     sdk: flutter
 

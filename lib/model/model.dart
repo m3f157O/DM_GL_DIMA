@@ -29,13 +29,12 @@ class AppState extends ChangeNotifier {
   Duration totalTime=Duration.zero;
   Color main=Colors.white;
   Color text=Colors.white;
-  Color second=Colors.lightBlue;
+  Color second=Colors.blue;
   bool asc=false;
   PHASE _state=PHASE.startingScreen;
 
-  List<Map<dynamic,dynamic>> savedActivities=[{"name":"duug","expiredate":"rat bastard"},{"name":"duug","expiredate":"rat bastard"},{"name":"duug","expiredate":"rat bastard"},{"name":"duug","expiredate":"rat bastard"},{"name":"duug","expiredate":"rat bastard"},];
-  bool newActivities=false;
-
+  List<Map<dynamic,dynamic>> savedActivities=[{"name":"duug","expiredate":"1"},{"name":"duug","expiredate":"2"},{"name":"duug","expiredate":"3"},{"name":"duug","expiredate":"4"},{"name":"duug","expiredate":"5"},];
+  List<Map<dynamic,dynamic>> newActivities=[];
 
 
 
@@ -47,20 +46,19 @@ class AppState extends ChangeNotifier {
   }
 
 
-  void notifyNewActivity() {
-    newActivities=true;
+
+
+
+  void addActivity(Map<dynamic,dynamic> newAc) {
+
+    newActivities.add(newAc);
     notifyListeners();
 
   }
 
-  void addActivity(Map<dynamic,dynamic> newAc) {
-
-    savedActivities.add(newAc);
-
-  }
-
   void refresh() {
-    newActivities=false;
+    savedActivities.addAll(newActivities);
+    newActivities=[];
     notifyListeners();
   }
 
@@ -140,18 +138,6 @@ class AppState extends ChangeNotifier {
 
 
 
-
-  void clearNewBuffer() {
-    newActivities=false;
-    notifyListeners();
-
-  }
-
-  void addToBuffer() {
-    newActivities=true;
-    notifyListeners();
-
-  }
 
 
 

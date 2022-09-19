@@ -1,4 +1,5 @@
 import 'package:dima_project/view/starting_screen.dart';
+import 'package:flushbar/flushbar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bounceable/flutter_bounceable.dart';
@@ -20,7 +21,7 @@ class ShowStats extends StatefulWidget {
 
 class RequestAndShow extends State<ShowStats> {
 
-  bool newActivities=false;
+  List<Map<dynamic,dynamic>> newActivities=[];
   late List<Map<dynamic,dynamic>> savedActivities;
   late Map<dynamic,dynamic> msg3;
 
@@ -93,7 +94,7 @@ class RequestAndShow extends State<ShowStats> {
                                 )
                             ),
                             SizedBox(height: 20,),
-                            newActivities ? Text("NEW ACTIVITIES, PLEASE PULL TO REFRESH",
+                            newActivities.isNotEmpty ? Text("NEW ACTIVITIES, PLEASE PULL TO REFRESH",
                               style:  TextStyle(
                                   color: second,
                                   fontSize: 18,
@@ -113,8 +114,12 @@ class RequestAndShow extends State<ShowStats> {
                                     }
                                     return Bounceable(
                                       onTap: () {
-                                        print("shut up");//ExerciseDetails(data: savedActivities.elementAt(i),color: main,second: second)));
-                                      },
+                                          Flushbar(
+                                            title:  "Congratualtions",
+                                            message:  "You are stupid",
+                                            duration:  Duration(seconds: 3),
+                                          ).show(context);
+                                                                         },
                                       child: Container(
                                         height: 80,
                                         width: double.infinity,
@@ -201,11 +206,10 @@ class RequestAndShow extends State<ShowStats> {
                                     hintText: 'Insert into database',
                                     suffixIcon: IconButton(
                                       onPressed: () => {
-                                        Controller().notifyNewActivity(context),
-
-                                        Controller().addActivity(context,{"name":"new","expiredate":"log"}),
+                                        Controller().addActivity(context,{"name":_controller.text,"expiredate":newActivities.length+savedActivities.length+1}),
                                       },
-                                      icon: const Icon(Icons.clear),
+
+                                      icon: const Icon(Icons.send),
                                     ),
                                   ),
                                 )
