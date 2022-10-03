@@ -50,6 +50,18 @@ class Controller {
   }
 
 
+  void validateCredentials(String password, String name,BuildContext context){
+    //TODO REAL AUTHENTICATION
+    toViewMenu(context);
+  }
+
+
+  void registerUser(String password, String name,BuildContext context){
+    //TODO REAL REGISTRATION
+    toViewMenu(context);
+  }
+
+
 
   void toggleAsc(BuildContext context) {
     Provider.of<AppState>(context,listen: false).toogleAsc();
@@ -57,6 +69,11 @@ class Controller {
   }
   void toInitial(BuildContext context) {
     Provider.of<AppState>(context,listen: false).setstate(PHASE.startingScreen);
+
+  }
+
+  void toRegister(BuildContext context) {
+    Provider.of<AppState>(context,listen: false).setstate(PHASE.register);
 
   }
 

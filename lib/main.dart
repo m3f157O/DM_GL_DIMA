@@ -1,5 +1,6 @@
 
 import 'package:dima_project/view/client_menu.dart';
+import 'package:dima_project/view/register.dart';
 import 'package:dima_project/view/starting_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -34,6 +35,7 @@ const authIssuer = 'https://$authDomain';
 
 const Map<PHASE,Widget> identifier = {
   PHASE.startingScreen: StartingScreen(),
+  PHASE.register: SignUpWidget(),
   PHASE.clientMenu: ClientMenu(),
 };
 

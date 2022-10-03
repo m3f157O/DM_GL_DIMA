@@ -1,4 +1,5 @@
 import 'package:dima_project/view/show_data.dart';
+import 'package:dima_project/view/show_profile.dart';
 import 'package:dima_project/view/show_stats.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -53,7 +54,8 @@ class ClientMenuAPI extends State<ClientMenu> {
     if(_selectedIndex==1) {
       return const ShowData();
     } else if(_selectedIndex==2){
-      return ShowHeartbeat(data: const {}, color: const Color(0xABABABAB), title: "DOG");
+      return const ShowProfile();
+        //
     } else {
       return const ShowStats();
 
